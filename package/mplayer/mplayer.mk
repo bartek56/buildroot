@@ -87,14 +87,6 @@ else
 MPLAYER_CONF_OPTS += --disable-fribidi
 endif
 
-# We intentionally don't pass --enable-libiconv, to let the
-# autodetection find which library to link with.
-ifeq ($(BR2_PACKAGE_LIBICONV),y)
-MPLAYER_DEPENDENCIES += libiconv
-else
-MPLAYER_CONF_OPTS += --disable-iconv
-endif
-
 # We intentionally don't pass --enable-termcap, in order to let the
 # autodetection find with which library to link with. Otherwise, we
 # would have to pass it manually.
@@ -377,6 +369,7 @@ define MPLAYER_CONFIGURE_CMDS
 		--disable-ivtv \
 		--enable-dynamic-plugins \
 		--enable-inet6 \
+		--enable-gui \
 	)
 endef
 
